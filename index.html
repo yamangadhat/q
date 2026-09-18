@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نور الإسلام | موقع إسلامي متكامل</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- شاشة التحميل الفخمة -->
+    <div id="preloader">
+        <div class="preloader-content">
+            <div class="mosque-silhouette">🕌</div>
+            <h1 class="preloader-title">نور الإسلام</h1>
+            <div class="preloader-bar"><div class="preloader-fill"></div></div>
+            <p class="preloader-text">بسم الله الرحمن الرحيم</p>
+        </div>
+    </div>
+
+    <!-- شريط التنقل -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <i class="fas fa-mosque"></i>
+                <span>نور الإسلام</span>
+            </a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link active">الرئيسية</a></li>
+                <li><a href="#quran" class="nav-link">المصحف</a></li>
+                <li><a href="#adhkar" class="nav-link">الأذكار</a></li>
+                <li><a href="#fatwa" class="nav-link">الفتاوى</a></li>
+                <li><a href="#chat" class="nav-link">المساعد الذكي</a></li>
+            </ul>
+            <div class="nav-toggle" id="navToggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- القسم الرئيسي (Hero) -->
+    <section id="home" class="hero">
+        <div class="hero-bg-pattern"></div>
+        <div class="floating-stars">
+            <div class="star" style="top:10%;left:15%;animation-delay:0s">✦</div>
+            <div class="star" style="top:20%;left:80%;animation-delay:1s">✧</div>
+            <div class="star" style="top:60%;left:10%;animation-delay:2s">✦</div>
+            <div class="star" style="top:70%;left:85%;animation-delay:0.5s">✧</div>
+            <div class="star" style="top:40%;left:50%;animation-delay:1.5s">✦</div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">✦ منصة إسلامية متكاملة ✦</div>
+            <h1 class="hero-title">نور <span class="highlight">الإسلام</span></h1>
+            <p class="hero-subtitle">مصحف كامل • أذكار • فتاوى ذكية • مساعد إسلامي بالذكاء الاصطناعي</p>
+            <div class="hero-ayah">
+                <p>﴿ وَنُنَزِّلُ مِنَ الْقُرْآنِ مَا هُوَ شِفَاءٌ وَرَحْمَةٌ لِّلْمُؤْمِنِينَ ﴾</p>
+                <span>— الإسراء: 82</span>
+            </div>
+            <div class="hero-buttons">
+                <a href="#quran" class="btn btn-primary"><i class="fas fa-book-open"></i> ابدأ القراءة</a>
+                <a href="#chat" class="btn btn-outline"><i class="fas fa-robot"></i> اسأل المساعد</a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>اكتشف</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- قسم المصحف الشريف -->
+    <section id="quran" class="section quran-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">✦ القرآن الكريم ✦</span>
+                <h2 class="section-title">المصحف <span class="highlight">الشريف</span></h2>
+                <p class="section-desc">اقرأ واستمع لأجمل التلاوات بأصوات أشهر القراء</p>
+            </div>
+
+            <!-- اختيار القارئ -->
+            <div class="reciter-selector reveal">
+                <button class="reciter-btn active" data-reciter="yasser">
+                    <i class="fas fa-microphone"></i> ياسر الدوسري
+                </button>
+                <button class="reciter-btn" data-reciter="sudais">
+                    <i class="fas fa-microphone"></i> عبدالرحمن السديس
+                </button>
+                <button class="reciter-btn" data-reciter="shuraim">
+                    <i class="fas fa-microphone"></i> سعود الشريم
+                </button>
+                <button class="reciter-btn" data-reciter="maher">
+                    <i class="fas fa-microphone"></i> ماهر المعيقلي
+                </button>
+            </div>
+
+            <!-- قائمة السور -->
+            <div class="surah-grid" id="surahGrid">
+                <!-- يتم تحميل السور ديناميكياً -->
+            </div>
+
+            <!-- مشغل الصوت -->
+            <div class="audio-player" id="audioPlayer">
+                <div class="player-info">
+                    <div class="player-surah" id="playerSurah">اختر سورة للاستماع</div>
+                    <div class="player-reciter" id="playerReciter"></div>
+                </div>
+                <div class="player-controls">
+                    <button class="player-btn" id="playPrev"><i class="fas fa-backward"></i></button>
+                    <button class="player-btn play-btn" id="playPause"><i class="fas fa-play"></i></button>
+                    <button class="player-btn" id="playNext"><i class="fas fa-forward"></i></button>
+                </div>
+                <div class="player-progress">
+                    <span id="currentTime">0:00</span>
+                    <input type="range" id="progressBar" value="0" min="0" max="100">
+                    <span id="duration">0:00</span>
+                </div>
+                <audio id="quranAudio"></audio>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الأذكار -->
+    <section id="adhkar" class="section adhkar-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">✦ حصن المسلم ✦</span>
+                <h2 class="section-title">الأذكار <span class="highlight">اليومية</span></h2>
+                <p class="section-desc">أذكار الصباح والمساء والنوم والاستيقاظ</p>
+            </div>
+            <div class="adhkar-tabs reveal">
+                <button class="adhkar-tab active" data-category="morning">
+                    <i class="fas fa-sun"></i> أذكار الصباح
+                </button>
+                <button class="adhkar-tab" data-category="evening">
+                    <i class="fas fa-moon"></i> أذكار المساء
+                </button>
+                <button class="adhkar-tab" data-category="sleep">
+                    <i class="fas fa-bed"></i> أذكار النوم
+                </button>
+                <button class="adhkar-tab" data-category="wake">
+                    <i class="fas fa-clock"></i> أذكار الاستيقاظ
+                </button>
+            </div>
+            <div class="adhkar-list" id="adhkarList">
+                <!-- يتم تحميل الأذكار ديناميكياً -->
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الفتاوى -->
+    <section id="fatwa" class="section fatwa-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">✦ الفتاوى الشرعية ✦</span>
+                <h2 class="section-title">اسأل عن <span class="highlight">فتوى</span></h2>
+                <p class="section-desc">احصل على إجابات شرعية موثوقة بمساعدة الذكاء الاصطناعي</p>
+            </div>
+            <div class="fatwa-container reveal">
+                <div class="fatwa-input-group">
+                    <textarea id="fatwaInput" placeholder="اكتب سؤالك الشرعي هنا... مثال: ما حكم صلاة الوتر؟" rows="4"></textarea>
+                    <button id="fatwaBtn" class="btn btn-primary">
+                        <i class="fas fa-search"></i> ابحث عن الفتوى
+                    </button>
+                </div>
+                <div class="fatwa-suggestions">
+                    <span>أسئلة شائعة:</span>
+                    <button class="suggestion-btn" data-question="ما حكم صلاة الوتر؟">حكم صلاة الوتر</button>
+                    <button class="suggestion-btn" data-question="ما هي أركان الإسلام؟">أركان الإسلام</button>
+                    <button class="suggestion-btn" data-question="ما حكم صيام يوم عرفة؟">صيام يوم عرفة</button>
+                    <button class="suggestion-btn" data-question="ما هي شروط الصلاة؟">شروط الصلاة</button>
+                </div>
+                <div class="fatwa-answer" id="fatwaAnswer">
+                    <!-- تظهر الإجابة هنا -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم المساعد الذكي -->
+    <section id="chat" class="section chat-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">✦ المساعد الذكي ✦</span>
+                <h2 class="section-title">تحدث مع <span class="highlight">المساعد</span></h2>
+                <p class="section-desc">مساعد إسلامي ذكي يجيب على أسئلتك</p>
+            </div>
+            <div class="chat-container reveal">
+                <div class="chat-header">
+                    <div class="chat-avatar"><i class="fas fa-robot"></i></div>
+                    <div>
+                        <div class="chat-name">نور - المساعد الإسلامي</div>
+                        <div class="chat-status"><span class="status-dot"></span> متصل الآن</div>
+                    </div>
+                </div>
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message bot-message">
+                        <div class="message-avatar"><i class="fas fa-robot"></i></div>
+                        <div class="message-content">
+                            <p>السلام عليكم ورحمة الله وبركاته! 👋</p>
+                            <p>أنا <strong>نور</strong>، مساعدك الإسلامي الذكي. يمكنني مساعدتك في:</p>
+                            <ul>
+                                <li>📖 تفسير آيات القرآن الكريم</li>
+                                <li>🕌 أحكام الصلاة والعبادات</li>
+                                <li>📿 الأذكار والأدعية</li>
+                                <li>❓ أسئلة عامة عن الإسلام</li>
+                            </ul>
+                            <p>كيف يمكنني مساعدتك اليوم؟</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-input-area">
+                    <input type="text" id="chatInput" placeholder="اكتب رسالتك هنا...">
+                    <button id="chatSend"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <i class="fas fa-mosque"></i>
+                    <span>نور الإسلام</span>
+                    <p>منصة إسلامية متكاملة تجمع بين الأصالة والتقنية</p>
+                </div>
+                <div class="footer-links">
+                    <h4>روابط سريعة</h4>
+                    <a href="#quran">المصحف</a>
+                    <a href="#adhkar">الأذكار</a>
+                    <a href="#fatwa">الفتاوى</a>
+                    <a href="#chat">المساعد الذكي</a>
+                </div>
+                <div class="footer-dua">
+                    <p>﴿ رَبَّنَا تَقَبَّلْ مِنَّا إِنَّكَ أَنتَ السَّمِيعُ الْعَلِيمُ ﴾</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 نور الإسلام - جميع الحقوق محفوظة</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
